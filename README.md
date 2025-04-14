@@ -1,4 +1,4 @@
-# Modern E-Commerce Web Application (Next.js + TypeScript)
+# E-Commerce Web Application (Next.js + Express.js + TypeScript)
 
 A full-stack e-commerce platform built using **Next.js** with **TypeScript**, integrated with **Prisma**, **PostgreSQL**, **JWT authentication**, and **Redux Toolkit** for state management. The platform supports user registration, login, product browsing, cart management, checkout flow, and email notifications.
 
