@@ -138,7 +138,7 @@ const ProductDetails = () => {
 
   return (
     <div className="min-h-screen bg-gray-200 p-20">
-      <h1 className="text-5xl font-bold text-center mb-6">{category} Products</h1>
+      <h1 className="text-5xl font-bold text-center mb-6">{category}</h1>
       <div className="flex justify-end mb-6">
         <select
           className="p-2 border rounded-lg"
