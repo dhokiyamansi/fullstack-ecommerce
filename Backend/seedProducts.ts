@@ -1,8 +1,9 @@
-const mongoose = require("mongoose");
-require("dotenv").config();
-const Product = require("./models/Product");
+import mongoose from "mongoose";
+import "dotenv/config";
 
-const products = [
+import Product, { type ProductDocument } from "./models/Product.ts";
+
+const products: ProductDocument[] = [
   {
     name: "Classic Leather Sneakers",
     category: "Footwear",
@@ -68,7 +69,7 @@ const products = [
   },
 ];
 
-async function seed() {
+async function seed(): Promise<void> {
   try {
     if (!process.env.MONGO_URI) {
       throw new Error("MONGO_URI is not defined in .env");
@@ -90,4 +91,4 @@ async function seed() {
   }
 }
 
-seed();
+void seed();

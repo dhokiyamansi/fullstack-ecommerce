@@ -1,6 +1,21 @@
-const Product = require("../models/Product");
+import type { Request, Response } from "express";
+import type { ParamsDictionary } from "express-serve-static-core";
 
-const getProductById = async (req, res) => {
+import Product from "../models/Product.ts";
+
+interface ProductIdParams extends ParamsDictionary {
+  id: string;
+}
+
+interface ProductRequestBody {
+  name?: string;
+  category?: string;
+  price?: number;
+  description?: string;
+  image?: string;
+}
+
+export const getProductById = async (req: Request<ProductIdParams>, res: Response) => {
   try {
     const product = await Product.findById(req.params.id);
     if (!product) return res.status(404).json({ error: "Product not found" });
@@ -10,7 +25,10 @@ const getProductById = async (req, res) => {
   }
 };
 
-const createProduct = async (req, res) => {
+export const createProduct = async (
+  req: Request<ParamsDictionary, unknown, ProductRequestBody>,
+  res: Response,
+) => {
   try {
     const { name, category, price, description, image } = req.body;
     const newProduct = new Product({ name, category, price, description, image });
@@ -21,7 +39,10 @@ const createProduct = async (req, res) => {
   }
 };
 
-const updateProduct = async (req, res) => {
+export const updateProduct = async (
+  req: Request<ProductIdParams, unknown, ProductRequestBody>,
+  res: Response,
+) => {
   try {
     const updatedProduct = await Product.findByIdAndUpdate(req.params.id, req.body, { new: true });
     if (!updatedProduct) return res.status(404).json({ error: "Product not found" });
@@ -31,7 +52,7 @@ const updateProduct = async (req, res) => {
   }
 };
 
-const deleteProduct = async (req, res) => {
+export const deleteProduct = async (req: Request<ProductIdParams>, res: Response) => {
   try {
     const deletedProduct = await Product.findByIdAndDelete(req.params.id);
     if (!deletedProduct) return res.status(404).json({ error: "Product not found" });
@@ -39,11 +60,4 @@ const deleteProduct = async (req, res) => {
   } catch (error) {
     return res.status(500).json({ error: "Failed to delete product" });
   }
-};
-
-module.exports = {
-  getProductById,
-  createProduct,
-  updateProduct,
-  deleteProduct,
 };
