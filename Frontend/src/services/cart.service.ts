@@ -1,6 +1,5 @@
 import { CartItem } from "@/types/cart.types";
-
-const API_BASE_URL = "http://localhost:5000";
+import { API_BASE_URL } from "./api";
 
 const getAuthHeaders = (): HeadersInit => {
   const token = localStorage.getItem("token");

@@ -1,6 +1,5 @@
 import { CheckoutFormData } from "@/types/checkout.types";
-
-const API_BASE_URL = "http://localhost:5000";
+import { API_BASE_URL } from "./api";
 
 export const placeOrder = async (formData: CheckoutFormData): Promise<boolean> => {
   const response = await fetch(`${API_BASE_URL}/order`, {

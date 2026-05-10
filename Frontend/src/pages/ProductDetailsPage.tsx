@@ -15,7 +15,7 @@ import { Product } from "@/types/product.types";
 export default function ProductDetailsPage() {
   const dispatch = useDispatch();
   const searchParams = useSearchParams();
-  const category = searchParams.get("category");
+  const category = searchParams?.get("category") ?? "";
   const [products, setProducts] = useState<Product[]>([]);
   const [sortedProducts, setSortedProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);

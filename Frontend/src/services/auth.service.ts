@@ -1,7 +1,6 @@
 import axios from "axios";
 import { SignInCredentials, SignUpFormValues } from "@/types/auth.types";
-
-const API_BASE_URL = "http://localhost:5000";
+import { API_BASE_URL } from "./api";
 
 export const signUpUser = async (values: SignUpFormValues): Promise<{ success: boolean }> => {
   const { confirmPassword, ...formData } = values;

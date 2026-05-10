@@ -15,7 +15,7 @@ export default function ProductListPage() {
   );
 
   const onSelectCategory = (categoryName: string) => {
-    router.push(`/productdetails?category=${categoryName}`);
+    router.push(`/productdetails?category=${encodeURIComponent(categoryName)}`);
   };
 
   return (

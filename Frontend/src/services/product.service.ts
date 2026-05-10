@@ -1,6 +1,5 @@
 import { CartItem, Product } from "@/types/product.types";
-
-const API_BASE_URL = "http://localhost:5000";
+import { API_BASE_URL } from "./api";
 
 const getAuthHeaders = (): HeadersInit => {
   const token = localStorage.getItem("token");
@@ -11,7 +10,7 @@ const getAuthHeaders = (): HeadersInit => {
 };
 
 export const fetchProductsByCategory = async (category: string): Promise<Product[]> => {
-  const response = await fetch(`${API_BASE_URL}/productlist/${category}`);
+  const response = await fetch(`${API_BASE_URL}/productlist/${category}`, { cache: "no-store" });
   if (!response.ok) {
     throw new Error("Failed to fetch products");
   }
